@@ -1,0 +1,457 @@
+<!---->
+
+<!--
+	SIGLAS:
+		CLI		= Command Line Interface
+		cd		= Change Directory
+		mkdir	= Make Directory
+		rmdir	= Remove Directory
+		init	= Initialize
+-->
+
+<!--
+	USO/FUNCION:
+		ls						-> Muestra todas la carpetas y archivos de un directorio
+		ls -a					-> Muestra todas la carpetas y archivos de un directorio que estan ocultos
+		ls -ltr					-> Para listar el contenido
+		pwd						-> Muestra la ubicacion de donde estamos en el directorio
+		cd 'nombreCarpeta'		-> Para ingresar a la carpeta asignada
+		cd 'nombre Carpeta'		-> Para ingresar a la carpeta asignada
+		cd ..					-> Salir del direcctorio que esta en 1 para atras
+		mkdir 'nombreCarpeta'	-> Crear carpeta
+		rmdir 'nombreCarpeta'	-> Elimina una carpeta.
+		clear					-> Limpia el historial de la pantalla
+		touch 'nombreArchivo'	-> Crea un archivo. Hay que especificar con la extension
+-->
+
+
+<!--
+	¿QUE ES GIT?
+	Sistema de control de versiones que nos permite rastrear los cambios que hemos hecho en un conjunto de archivos.
+
+	¿QUE ES GITHUB?
+	Servicio de hosting que nos permite almacenar proyectos de desarrollo de software y control de versiones usando git.
+
+	CONTROL DE VERSIONES
+	Sistema encargado de administrar los cambios realizados en programas de computadora o conjuntos de archivos.
+
+	REPOSITORIO
+	Coleccion de archivos de distintas versiones de un proyecto.
+		- Local
+		- Remoto
+	
+	COMMIT
+	Componentes basicos de la linea del tiempo de un proyecto de git.
+
+	GIT BASH
+	Herramienta que permite ejecutar comandos de GIT. Es una linea de comandos.
+
+	CLONAR
+	Crear una copia local de un repositorio remoto, incluyento sus versiones e historial de commits.
+
+	ORIGIN
+	Nombre que comunmente le asignamos al repositorio remoto que clonamos.
+-->
+
+
+<!--
+	DESCARGAR GIT PARA WINDOWS:
+		- Pagina oficial: https://git-scm.com/
+		- Ubicarse en la imagen de PC, click en el boton 'Download for Windows', te llevara a otra pagina.
+		- Clic en: 'Click here to download', comenzara la descarga.
+	
+	INSTALAR:
+		- Doble click en el archivo descargado.
+		- Click en el boton 'Next', para aceptar la licencia.
+		- Click en el boton 'Next', para aceptar la ubicacion donde se instalara.
+		- Click en la casilla 'On the desktop', para agregar el icono en el escritorio. Click en el boton 'Next'.
+		- Click en el boton 'Next', para ver los atajos.
+		- Seleccionar un editor por defecto, en este caso sera 'Use Visual Studio Code as Gits default editor'. Click en el boton 'Next'.
+		+ Seleccionar el nombre de la rama inicial de nuestros repositorios. Por defecto viene con el nombre de 'master'.
+			- Seleccionar la opcion 'Override the default branch name for new repositories', y dejar el nombre 'main'. Click en el boton 'Next'.
+		- Seleccionar el ajuste el PATH para el entorno. Dejar por defecto 'Git from the command line and from 3rd-party software' y click en el boton 'Next'.
+		- Seleccionar por defecto 'Use blundled OpenSSH', click en el boton 'Next'.
+		- Seleccionar por defecto 'Use the OpenSSL library', click en el boton 'Next'.
+		- Seleccionar por defecto 'Checkout Windows-style, commit Unix-style line endings', click en el boton 'Next'.
+		- Seleccionar por defecto el emulador del terminal con Git Bash'Use MinTTY (the default terminal of MSYS2)', click en el boton 'Next'.
+		- Seleccionar por defecto 'Default (fast-forward or merge)', click en el boton 'Next'.
+		- Seleccionar por defecto el administrador de credenciales 'Git Credential Manager', click en el boton 'Next'.
+		- Seleccionar por defecto la casilla 'Enable file system caching', click en el boton 'Next'.
+		- Dejar sin marcar las casillas, click en el boton 'Install'.
+		- Marcar las dos casillas: 'Launch Git Bash', y 'View Release Notes', click en el boton 'Finish'.
+	
+	EMPEZAR A USAR GIT BASH
+		- En el buscado de Windows, escribir Git, hasta que aparezca 'Git Bash'.
+		- Para hacer mas grande la letra, con CTRL + MOUSE.
+-->
+
+
+<!--
+	DESCARGAR GIT PARA DEBIAN/UBUNTU:
+		- Pagina oficial: https://git-scm.com/
+		- Ubicarse en la imagen de PC, click en el boton 'Download for Linux', te llevara a otra pagina.
+
+	INSTALAR CON LINEA DE COMANDO EN LA TERMINAL:
+		sudo su							-> Ingresar al usuario root, digitar la clave del SO
+		apt-get update					-> Actualizar
+		apt-get upgrade -y				-> Actualizar
+		apt-get install git				-> Instalar Git
+
+	En el caso que haya problemas con la instalacion
+		sudo apt --fix-broken install	->
+	
+	Opciones para instalar interface - no es obligatorio la instalacion
+		sudo apt install gitg			-> Para escritorio gnome
+		sudo apt install gitk			-> Para escritorio kde
+		sudo apt install gitg gitk		-> Para escritorios con gnome y kde
+
+	Instalar para hacer comparacion de codigo - no es obligatorio la instalacion
+	Despues de la instalacion tocaria hacer una configuracion. Link del video: https://www.youtube.com/watch?v=5zM5cv1Gz34
+		sudo apt install meld
+-->
+
+
+<!--
+	Para ver la version de Git Bash - Las dos opciones es igual
+		git --version
+		git -v
+-->
+
+
+<!--Git Bash (Bourne - Again Shell)-->
+
+<!--Para cambiar el tema-->
+posh-git
+<!--Instalar en Power Shell de Windows>
+Install-Module posh-git
+
+
+<!--
+	Configurar el nombre en modo global. El global es para todos los proyectos/repositorios. El nombre es para que se muestre en los commit o en nuestro cambios
+		git config --global user.name "Victor Rivera"
+
+	Configurar el nombre solo para un repositorio, no global
+		git config user.name "Victor Rivera"
+
+	Consultar el nombre que se registro/asigno
+		git config user.name
+-->
+
+
+<!--
+	Configurar el correo para todos los repositorios
+		git config --global user.email "libreriadevictor@gmail.com"
+
+	Configurar el correo para un solo repositorio-->
+		git config user.email "libreriadevictor@gmail.com"
+
+	Consultar el email que esta registrado en los repositorios
+		git config user.email
+-->
+
+
+<!--
+	Estable como editor de texto predeterminado o cambiar el actual
+		git config --global core.editor "code --wait"			-> Visual Studio Code
+		git config --global core.editor "atom --wait"			-> Atom
+		git config --global core.editor "subl -n -w"			-> Sublime Text
+		git config --global core.editor "mate -w"				-> TextMate
+
+	Cambiar el editor de texto a notepad
+		git config --global core.editor C:/Windows/System32/notepad.exe
+	
+	Para abrir la carpeta en donde me encuentro con Visual Studio Code
+		code .
+-->
+
+
+<!--
+	Revisar la configuracion:
+		git config --list
+-->
+
+
+<!--Para ver la configuracion ingresada en el editor de texto (visual studio code)>
+git config --global -e
+
+<!--Salto de linea en windows son dos caracteres>
+CR Carriage Return
+LF Line Feed
+
+<!--Salto de linea en Linux con caracteres>
+LF Line Feed
+
+<!-- El valor de la variable para los salto de linea en Windows/Linux-->
+<!-- Para quienes esten en windows es true-->
+<!-- Para quienes esten en linux es input-->
+git config --global core.autocrlfr true
+
+
+
+<!--
+	Para crear/iniciar el proyecto/repositorio. Se creara una carpeta oculta con el nombre de .git
+		git init 			->
+		git init .			-> Tambien se crea utilizando el punto
+		git init --bare		-> Para iniciar el proyecto/repositorio desde un servidor
+-->
+
+
+<!--
+	Cambiar la rama de master a main. Al crear un nuevo repositorio se creara con main
+		git config --global init.defaultBranch main
+-->
+
+
+<!--
+	TRES AREAS EN GIT:
+		- Directorio de trabajo.- La carpeta del proyecto que contiene los archivos y el directorio .git del repositorio.
+			Modificada (Modified).- Si la version del archivo contiene cambios que NO son parte del repositorio y NO se ha añadido al area de preparacion.
+		- Area de programacion/preparacion (Staging Area).- Conjunto de archivos y cambios que seran incluidos en el proximo commit. 
+			Preparada (Staged).- Si la verion del archivo contiene cambios que NO son parte del repositio pero fue añadida al area de preparacion.
+		- Repositorio (directorio .git).- Directorio que contiene los metadatos y las versiones de tu proyecto.
+			Confirmada (Committed).- Si la version del archivo ya se encuentra en el directorio de Git.
+-->
+
+
+<!--
+	Muestra el estado real del repositorio
+		git status 
+-->
+
+
+<!--
+	Ignorar un archivo para que no lo tome en cuenta el commit
+		touch .gitignore
+	
+	Dentro del documento escribimos - Con los ** decimos que puede estar en cualquier parte del proyecto debe ignorar el archivo
+		**/.nombreArchivo
+-->
+
+
+<!--
+	Agregamos archivo/s al proceso de preparacion para hacer commit.
+	De la misma manera se hace con archivos que se modifican que ya se hicieron COMMIT anteriormente
+		git add nombreArchivo.txt							-> Agregar un archivo
+		git add nombreArchivo1.txt nombreArchivo2.txt		-> Agregar varios archivos
+		git add *.txt										-> Agregar varios archivos indicando la extension del documento
+		git add .											-> Agrega todos los archivo indicando el punto como extension
+
+	Quita el archivo del seguimiento de Git. Realiza un reverso del git add
+		git rm --cached 'nombreArchivo.txt'
+-->
+
+
+<!--
+	¿QUE ES UN COMMIT?
+	Componente basico de la linea del tiempo de un proyecto de Git.
+	Es un registro o foto del estado de un proyecto en un momento especifico.
+	Registra los cambios que se realizaron en los archivos en comparacion con la version anterior.
+
+	Git le asigna a cada COMMIT un identificar unico llamado SHA (Secure Hash Algorithm) o hash.
+
+	Hacer un COMMIT:
+		git commit -m "Frase relacionada con el cambio guardado"
+		git commit					-> Se mostrara la ventana de VSC y ahi escribimos la frase relacionada con el cambio a guardar y despues guardamos y cerrar.
+		git commit -a				-> Es para guardar y colocar un mensaje relacionado al cambio. Se abrira el editor de texto para guardar el mensaje del cambio.
+		git commit -a -m			-> "Mensaje de cambios o comentario" -> Agregar, pasar al commit, y insertar el comentario
+-->
+
+
+rm nombreProyecto.txt -> Eliminar un archivo
+git status -> Me muestra el archivo eliminado
+git add nombreProyecto.txt -> Para guardar el cambio(eliminado) en state
+git status -> Para ver que esta ocurriendo
+git commit -m "Eliminando archivo" -> Dar el nombre a un cambio en el documento
+**Es igual a**
+git rm nombreProyecto.txt
+git status
+git restore --staged nombreProyecto.txt
+git status
+
+**Recuperar un archivo borrado**
+git restore nombreProyecto.txt
+git status
+ls
+git add nombreProyecto.txt
+
+**Cambiar el nombre del archivo**
+mv nombreProyecto.txt nombreProyectos.txt
+git add nombreProyectos.txt
+**Es igual a**
+git mv nombreProyecto.txt nombreProyectos.txt
+git status
+git commit -m "Cambiando el nombre del archivo"
+
+**Crear un archivo que no se guarde en el state de git**
+**Crear un archivo con el nombre de '.env'**
+**Opcional: Crear dos variables dentro del archivo**
+password = 1234567
+user = victor
+**Crear un archivo con el nombre de '.gitignore'**
+**Dentro del archivo escribir el nombre de un archivo, carpetas o ruta que se va a ignorar**
+**Por ejemplo escribir dentro '.env'**
+git add .gitignore
+git commit -m "Agregando archivo gitignore" 
+
+**En vez de escribir 'git status' podemos usar**
+git status -s
+
+**Con el comando**
+git diff -> Podemos ver con detalle igual que un git status. Se puede usar antes de hacer un add con commit. Muestra la diferencia que habia con la actual
+**Para salir de la pantalla de muestra, presionamos la letra Q**
+
+
+<!--
+	Para ver el historial de los cambios guardados con el COMMITs
+		git log 				-> Muestra 4 puntos -> El codigo del commit, autor (usuario y correo), fecha completa, mensaje.
+		git log -p				-> Muestra el detalle por archivos y la diferencia de ese commit. Precionando <Enter> para ver otros resultados
+		git log -p -1			-> Muestra el ultimo detalle
+		git log -p -2			-> Muestra los dos ultimos detalles
+		git log --graph			-> Muestra el historial de los cambios guardados pero tipo rama. Muestra 4 puntos -> El codigo del commit, autor (usuario y correo), fecha completa, mensaje.
+		git log --graph --pretty=oneline				-> Muestra el codigo del commit y el mensaje en una linea
+		git log --graph --decorate --all --one			-> Muestra un resumen del codigo del commit y el mensaje en una linea.
+		git log --stat			-> Muestra un resumen de los cambio en el archivo
+		git log --oneline		-> Muestra en una linea toda la informacion del COMMIT
+		git log --pretty=oneline						-> Muestra en una linea
+		git log --pretty=format:"%H - %an - %ad - %s"	->Consulta en https://git-scm.com/book/es/v2/Fundamentos-de-Git-Ver-el-Historial-de-Confirmaciones
+	
+	Para salir de la pantalla con la letra Q
+-->
+
+
+<!--
+	RAMA (BRANCH)
+		Una rama en Git es una linea independiente de desarrollo en el repositorio.
+-->
+
+
+<!--Como usar un alias en sentencias con git log - Esta sentencia se almacenara en el archivo de config-->
+modeloUsar -> git config --global alias.nombreAlias "sentencia a utilizar"
+ejemplo:
+git config --global alias.tree "log --graph --decorate --all --oneline"
+git tree <enter>
+
+
+<!--
+	Editar el ultimo comentario/mensaje del commit. Es aconsejable solo cambiar en el repositorio local y no en el global
+		git commit --amend
+	
+	Se abrira el editor para editar el comentario
+-->
+
+
+<!--
+	Elimina/retroceder un commit. No elimina el cambio del archivo, solo elimina/retrocede el commit
+		git reset --soft HEAD~1		-> El 1 significa el ultimo commit
+
+	Elimina/retroceder un commit. Si elimina el cambio del archivo, y elimina/retrocede el commit
+		git reset --hard HEAD~1
+-->
+
+
+<!--Regresar el estado de actualizado a NO actualizado-->
+git reset HEAD nombreArchivo.txt
+
+<!--Elimina el ultimo(commit) cambio en el archivo-->
+git checkout -- nombreArchivo.txt
+
+
+<!--Agregar etiquetas a los cambios-->
+git tag -a v1.0 -m "Mi primera version con git"
+git tab -> Consultar la version
+<!--Eliminar etiquetas-->
+git tag --delete v1.0
+git tag --d v1.0
+git log o git tag-> Consulta que se haya eliminado la etiqueta
+
+
+<!--Agrega etiqueta a un especifico commit guardado>
+git log -> Para coger los 7 primeros digitos y copiar
+git tag -a v1.0 pegarDigitosAqui
+**Escribir un comentario de la version por ejemplo "Mi primera version con git"**
+git log -> Para verificar que este asignada la etiqueta
+**Otra forma de guardar la etiqueta directamente con el mensaje**
+git tag -a v1.0.1 -m "Mi segunda version" pegarDigitosAqui
+git log -> Para verificar que este asignada la etiqueta
+
+
+
+<!--Ver lista de las versiones de las etiquetas-->
+git tag
+git show nombreEtiqueta -> Vemos el detalle que tiene la etiqueta 
+
+
+<!--
+	Crear una rama:
+		git branch 						-> Consultar la lista de ramas y la que esta con asterisco es la que esta actualmente
+		git branch nombre-rama			-> Crear una rama. El nombre debe ser con minuscula y juntamos las palabras con el guion.
+
+	Para cambiaronos de rama, debemos tener abierto VSC para ver el archivo:
+		git checkout nombre-rama		-> Para pasarnos/cambiarnos a otra rama
+		git checkout main				-> Para pasarnos/cambiarnos a la rama principal
+
+	Crear una rama y al mismo tiempo pasarnos a la rama creada:
+		git checkout -b nombre-rama		-> Con esto ya estariamos en la rama creada. Antes de crear una rama debemos estar en la rama principal para que haga la copia de ahi
+
+	Cambiar el nombre de la rama:
+		git branch -m nuevo-nombre-rama	-> Cambiar el nombre (renombrar) a la rama. Debemos estar en rama que vamos a cambiar el nombre
+		git branch -m antiguo-nombre-rama' 'nuevo-nombre-rama		-> Cambiar el nombre a la rama. Debemos estar en rama main/principal
+
+	ELIMINAR UNA RAMA EN EL REPOSITORIO LOCAL DE GIT
+		git branch -d nombre-rama 		-> Debemos estar en la rama main/principal
+-->
+
+
+git switch 'nombre-rama' ->Para pasarnos/cambiarnos a otra rama. Ya trae con toda la informacion de la rama principal
+git switch main ->Regresamos a la rama principal
+
+
+<!--
+	FUSIONAR/CONVINAR RAMAS (MERGE)
+	Proceso que permite convinar varias lineas independientes de desarrollo en una sola rama.
+	Para fusionar dos ramas, debes estar en la rama que recibira la fusion/cambios.
+	Despues de fusion/convinar las ramas podemos eliminar la rama secundaria.
+
+		git merge nombre-rama		->
+		git merge --continue		-> Cuando existe conflicto al convinar dos ramas y despues de solucionar escribimos esa linea
+-->
+
+**Muestra/Visualizar el contenido/datos del archivo y lo muestra en la terminal**
+cat nombreArchivo.txt
+
+
+
+**Despues de crear el repositorio en la nube**
+**Escribimos en el archivo local**
+git remote add origin https://github.com/libreriavict/practischool.git
+**Despues**
+git push -u origin main
+
+
+
+<!--
+	Clonar un repositorio del internet(github) al computador mediante GitBash
+	Dentro de la carpeta del proyecto.
+	Abrir la terminal y pegar el siguiente comando.
+		git clone 'url-del-repositorio'
+-->
+
+
+<!--Pasar el archivo actualizado del computador(gitbash) al internet(github)-->
+
+
+
+
+REFERENCIAS:
+
+->	Aprende Git y GitHub - Curso desde Cero
+	freeCodeCamp Español
+	https://www.youtube.com/watch?v=mBYSUUnMt9M
+	Tiempo: 5:32:54 - 3:33:02
+
+->	Curso de GIT y GITHUB desde CERO para PRINCIPIANTES
+	MoureDev by Brais Moure
+	https://www.youtube.com/watch?v=3GymExBkKjE
+	Tiempo: 1:19
+
+
